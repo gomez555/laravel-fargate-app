@@ -6,7 +6,8 @@ SHELL ["/bin/ash", "-oeux", "pipefail", "-c"]
 ENV TZ=UTC
 
 RUN apk update && \
-  apk add --update --no-cache --virtual=.build-dependencies g++
+  apk add --update --no-cache --repository http://nl.alpinelinux.org/alpine/edge/main libstdc++
+  #apk add --update --no-cache --virtual=.build-dependencies g++ \
 
 # node command
 COPY --from=node /usr/local/bin /usr/local/bin
