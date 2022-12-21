@@ -58,7 +58,7 @@ jobs:
 
       #- run: docker-compose exec -T web npm cache clean --force
 
-      - run: docker-compose exec -T web sudo npm run prod
+      - run: docker-compose exec -T web npm run production
 
       - uses: aws-actions/amazon-ecr-login@v1
         id: amazon-ecr-login
