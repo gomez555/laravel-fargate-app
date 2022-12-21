@@ -53,12 +53,18 @@ jobs:
           path: backend/node_modules
           key: npm-v1-${{ hashFiles('backend/package-lock.json') }}
 
-      - run: docker-compose exec -T web npm ci
+      - uses: actions/setup-node@v3
+        with:
+        node-version: 16
+
+      - run: npm ci
         if: ${{ !steps.cache-npm-ci.outputs.cache-hit }}
+        working-directory: backend
 
       #- run: docker-compose exec -T web npm cache clean --force
 
-      - run: docker-compose exec -T web npm run prod
+      - run: npm run prod
+        working-directory: backend
 
       - uses: aws-actions/amazon-ecr-login@v1
         id: amazon-ecr-login
