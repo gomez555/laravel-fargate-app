@@ -58,9 +58,7 @@ jobs:
 
       - run: docker-compose exec -T web whoami
 
-      - run: docker-compose exec -T web ls -al /root
-
-      - run: docker-compose exec -T web ls -al /root/.npm
+      - run: docker-compose exec -T web npm cache clean --force
 
       - run: docker-compose exec -T web npm run prod
 
