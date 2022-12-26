@@ -1,0 +1,10 @@
+region: us-west-2
+cluster: laravel-fargate-prod-foobar
+service: laravel-fargate-prod-foobar
+service_definition: ecs-service-def.json
+task_definition: ecs-task-def.json
+timeout: "10m0s"
+lugins:
+  - name: tfstate
+    config:
+      url: s3://sample-tfstate-aura/laravel-fargate-app/prod/cicd/foobar=v1.0.0.tfstate
