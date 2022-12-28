@@ -15,7 +15,7 @@
                 }
             ],
             "essential": true,
-            "image": "{{ tfstate `data.aws_ecr_repository.nginx.repository_url` }}:{{ must_env `IMAGE_TAG`}} ",
+            "image": "{{ tfstate `data.aws_ecr_repository.nginx.repository_url` }}:{{ must_env `IMAGE_TAG` }}",
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -51,7 +51,7 @@
                 }
             ],
             "essential": true,
-            "image": "{{ tfstate `data.aws_ecr_repository.php.repository_url` }}:{{ must_env `IMAGE_TAG`}} ",
+            "image": "{{ tfstate `data.aws_ecr_repository.php.repository_url` }}:{{ must_env `IMAGE_TAG` }}",
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -100,7 +100,7 @@
         },
         {
             "key": "Name",
-            "value": "{{ must_env `SYSTEM_NAME` }}-{ must_env `ENV_NAME` }}-{{ must_env `SERVICE_NAME` }}"
+            "value": "{{ must_env `SYSTEM_NAME` }}-{{ must_env `ENV_NAME` }}-{{ must_env `SERVICE_NAME` }}"
         }
     ],
     "taskRoleArn": "{{ tfstate `data.aws_iam_role.ecs_task.arn` }}",
