@@ -105,6 +105,10 @@ jobs:
         with:
           version: v2.0.3
 
+      - name: Register task definition
+        run: ecspresso register --config config_$ENV_NAME.yaml
+        working-directory: ./ecspresso
+
       - name: Deploy to ecs
         run: ecspresso deploy --config config_$ENV_NAME.yaml --latest-task-definition
         working-directory: ./ecspresso
